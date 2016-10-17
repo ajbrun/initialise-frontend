@@ -1,0 +1,28 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": [
+    "airbnb-base"
+  ],
+  "globals": {
+    "angular": false,
+    "DEBUG": false
+  },
+  "rules": {
+    "global-require": "off",
+    "no-use-before-define": [
+      "error",
+      {
+        "functions": false,
+        "classes": true
+      }
+    ],
+    "import/no-unresolved": "off",
+    "linebreak-style": "off",
+    "no-debugger": "warn",
+    "no-restricted-syntax": "warn",
+    "max-len": "off"
+  }
+}
