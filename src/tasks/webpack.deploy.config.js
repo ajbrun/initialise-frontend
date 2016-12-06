@@ -36,7 +36,7 @@
     },
 
     plugins: [
-      new CleanWebpackPlugin([path.join(__root, '../dist')]),
+      new CleanWebpackPlugin(['../src/dist'], { root: path.resolve(__dirname, '..') }),
       new ExtractTextPlugin('main.css'),
       new webpack.DefinePlugin({
         DEBUG: false

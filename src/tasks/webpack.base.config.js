@@ -87,8 +87,8 @@
     output: {
       chunkFilename: '[name].bundle.js',
       filename: '[name].bundle.js',
-      path: path.join(__root, '../dist'),
-      publicPath: '/sitefiles/dist/',
+      path: path.join(__root, '../src/dist'),
+      publicPath: '/src/dist/',
     },
 
     postcss: [
