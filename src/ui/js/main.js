@@ -1,4 +1,7 @@
 import 'babel-polyfill';
+import 'jquery';
+
+require('./components/carousel');
 
 // import 'angular';
 // import 'angular-animate';
