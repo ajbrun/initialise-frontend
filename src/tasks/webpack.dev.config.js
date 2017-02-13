@@ -1,48 +1,57 @@
-(function () {
-  var extend = require('extend');
-  var path = require('path');
-  var webpack = require('webpack');
+(() => {
+  const extend = require('extend');
+  const path = require('path');
+  const webpack = require('webpack');
 
   // Load webpack plugins.
-  var BowerWebpackPlugin = require('bower-webpack-plugin');
-  var ExtractTextPlugin = require('extract-text-webpack-plugin');
+  const StyleLintPlugin = require('stylelint-webpack-plugin');
+  const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
   // Clone base.
-  var config = Object.create(require('./webpack.base.config'));
+  const config = Object.create(require('./webpack.base.config'));
 
-  var __root = path.resolve(__dirname, '../');
+  const root = path.resolve(__dirname, '../');
 
   // Load base configuration.
-  config = extend(true, {}, config, {
+  module.exports = extend(true, {}, config, {
     cache: true,
-    debug: true,
     devtool: '#cheap-source-map',
 
     entry: {
-      'head': ['modernizr'],
-      'main': [
+      head: ['modernizr'],
+      main: [
         'webpack/hot/dev-server',
         'webpack-hot-middleware/client?reload=true',
         'styles/main.scss',
-        'js/main'
-      ]
+        'js/main',
+      ],
     },
 
     plugins: [
-      new ExtractTextPlugin('main.css'),
+      new ExtractTextPlugin({
+        filename: '[name].css',
+      }),
       new webpack.DefinePlugin({
-        DEBUG: true
+        DEBUG: true,
+      }),
+      new webpack.LoaderOptionsPlugin({
+        debug: true,
+        eslint: {
+          ignorePath: path.join(root, '.eslintignore'),
+        },
       }),
       new webpack.ProvidePlugin({
         $: 'jquery',
         jQuery: 'jquery',
-        'window.jQuery': 'jquery'
+        'window.jQuery': 'jquery',
       }),
-      new webpack.optimize.OccurenceOrderPlugin(),
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoErrorsPlugin()
-    ]
+      new webpack.optimize.UglifyJsPlugin({
+        sourceMap: true,
+        warnings: true,
+      }),
+      new webpack.NoEmitOnErrorsPlugin(),
+      new StyleLintPlugin(),
+      new webpack.HotModuleReplacementPlugin()
+    ],
   });
-
-  module.exports = config;
 })();
