@@ -23,8 +23,7 @@
       'main': [
         'webpack/hot/dev-server',
         'webpack-hot-middleware/client?reload=true',
-        'less/main.less',
-        'sass/main.scss',
+        'styles/main.scss',
         'js/main'
       ]
     },

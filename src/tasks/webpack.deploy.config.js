@@ -22,8 +22,7 @@
     entry: {
       'head': ['modernizr'],
       'main': [
-        'less/main.less',
-        'sass/main.scss',
+        'styles/main.scss',
         'js/main'
       ]
     },

@@ -103,8 +103,7 @@
         'fonts': path.join(__root, 'ui/fonts'),
         'img': path.join(__root, 'ui/img'),
         'js': path.join(__root, 'ui/js'),
-        'less': path.join(__root, 'ui/less'),
-        'sass': path.join(__root, 'ui/sass'),
+        'styles': path.join(__root, 'ui/styles'),
         'vendor': path.join(__root, 'ui/js/vendor'),
 
         'modernizr': 'vendor/modernizr.custom.js',
